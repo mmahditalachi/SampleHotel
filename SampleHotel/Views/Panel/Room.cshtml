@@ -1,0 +1,51 @@
+﻿@model SampleHotel.ViewModels.RoomViewModel
+
+
+@{
+    Layout = "_PanelLayout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/reserve.css" asp-append-version="true" />
+</head>
+
+<div class="container pb-3">
+    <h3 class="text-center">Reserve</h3>
+    <form asp-controller="Panel" asp-action="Room" class="was-validated">
+        <div style="text-align:center">
+            <img src="~/images/@Model.ImageUrl" class="img-fluid" style="display: block;margin-left:auto;margin-right: auto;" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Name">Name:</label>
+            <input asp-for="Name" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Location">Location:</label>
+            <input asp-for="Location" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Floor">Floor:</label>
+            <input asp-for="Floor" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Capacity">Capacity:</label>
+            <input asp-for="Capacity" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="form-group pt-3">
+            <label asp-for="From">From:</label>
+            <input asp-for="From" type="date" class="datepicker form-control" data-date-format="yyyy/mm/dd">
+        </div>
+
+        <div class="form-group pt-3">
+            <label asp-for="To">To:</label>
+            <input asp-for="To" type="date" class="datepicker form-control" data-date-format="yyyy/mm/dd">
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3 form-control">Submit</button>
+    </form>
+</div>

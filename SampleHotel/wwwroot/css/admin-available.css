@@ -1,0 +1,380 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #222E50;
+
+    color: white;
+    max-width: 100vw;
+    height: 8vh;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1;
+}
+
+ul{
+    margin-bottom: 0;
+}
+
+hr {
+    color: inherit;
+    background-color: black;
+    border: 5px;
+    opacity: .25;
+}
+
+img {
+    width: 80%;
+    height: auto;
+    /* border-radius: 50%; */
+    display: block;
+}
+
+.logo {
+    width: 200px;
+}
+
+.menu {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    gap: 1em;
+}
+
+.menu li {
+    position: relative;
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+}
+
+.dropbtn {
+    font-size: 15px !important;
+    /* background-color: #555; */
+    padding: 0.7em 1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.tri {
+	width: 0;
+	height: 0;
+	border-left: 0.5em solid transparent;
+	border-right: 0.5em solid transparent;
+	border-bottom: 10px solid white;
+    position: absolute;
+    right: 30%;
+    z-index: 2;
+    display: none;
+}
+
+.dropdown-content {
+    min-width: inherit;
+    z-index: 1;
+    list-style-type: none;
+    background-color: white;
+    padding-top: 7px;
+    position: absolute;
+    top: 135%;
+    border-radius: 15px;
+    display: none;
+}
+
+.dropdown-content li {
+    margin: 0 0.5em;
+    font-size: 0.7em;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.dropdown-content li:last-child {
+    border: none;
+}
+
+.dropdown-content a:any-link {
+    white-space: nowrap;
+    display: block;
+    padding: 0.3em 0.5em;
+    color: black;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+.lang:hover .dropdown-content,.lang:hover .tri, .contact:hover .dropdown-content,.contact:hover .tri{
+    display: block;
+}
+
+main {
+    color: white;
+    width: 80vw;
+    align-self: center;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr;
+    grid-template-columns: 1fr 3fr;
+    justify-items: stretch;
+    align-items: stretch;
+
+    margin: 1.5rem 5rem;
+}
+
+.main-menu {
+    grid-row: 1/3;
+    grid-column: 1/2;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5em;
+    padding: 0.5em;
+    font-size: 0.9em;
+    box-shadow: 2px 2px 10px -2px black;
+}
+
+.main-menu-title {
+    color: black;
+}
+
+.main-menu-title-first {
+    font-size: 1em;
+    letter-spacing: 2px;
+    color: black;
+}
+
+.menu-list {
+    font-weight: 0;
+    padding: 0 1em;
+    list-style-type: none;
+}
+
+.date{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    color: black;
+}
+
+.menu-list div {
+    padding: 0.2em 0;
+}
+
+.date input {
+    background-color: rgba(34, 46, 80, 0.2);
+    border: 0;
+    border-radius: 5px;
+    font-size: 0.7em;
+    padding: 0 0.5em;
+}
+
+.radio {
+    color: black;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    max-height: 150px;
+    overflow: auto;
+}
+
+.type {
+    color: black;
+
+}
+
+.type div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.radio input[type=radio], .type input {
+    transform: scale(1.5);
+}
+
+.filter {
+    margin: 0 auto;
+    margin-top: 1.2em;
+}
+
+.filter button {
+    padding: 0.3em 4em;
+    font-size: 1.2em;
+    border: 0;
+    border-radius: 10px;
+    background-color: rgba(34, 46, 80, 0.5);
+}
+
+.main-title {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    font-size: 1.8em;
+    margin: 0 1rem;
+    color: black;
+}
+
+.main-page {
+    margin: 0 1rem;
+}
+
+.main-page a:any-link, .filter a:any-link {
+    color: black;
+    text-decoration: none;
+}
+
+.box {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1.5em;
+    box-shadow: 2px 2px 10px -2px black;
+    padding: 0.5em;
+    position: relative;
+    margin: 0.5em auto;
+}
+
+.box:hover {
+    transform: scale(1.02);
+}
+
+.inside {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1.5em;
+    align-items: stretch;
+}
+
+.photo img {
+    width: 300px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.loc {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.loc img {
+    width: 30px;
+    height: auto;
+}
+
+.info {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5em;
+}
+
+.desc, .options {
+    font-size: 17px;
+}
+
+footer {
+    border-top: 1px solid #222;
+    background-color: #222E50;
+    color: #fff;
+    max-width: 100vw;
+    height: 5vh;
+    margin-top: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer a:any-link {
+    color: white;
+    text-decoration: none;
+}
+
+.like a {
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    width: 50px;
+    right: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1020px) {
+    .photo img {
+        width: 250px;
+        height: 200px;
+    }
+
+    .inside {
+        flex-flow: column nowrap;
+    }
+
+    body {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .like button {
+        right: 50px;
+    }
+
+    .logo {
+        display: none;
+    } 
+
+    main {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 1.5rem auto;
+    }
+
+    .main-title {
+        display: none;
+    }
+
+    .main-menu {
+        width: 50%;
+    }
+
+    .main-page {
+        width: 80%;
+    }
+
+    .photo img {
+        width: 100%;
+    }
+
+    .filter button {
+        width: 80%;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width:485px) {
+    .main-menu {
+        display: none;
+    }
+
+    .lang, .out {
+        display: none;
+    }
+}

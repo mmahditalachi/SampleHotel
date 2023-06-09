@@ -1,0 +1,139 @@
+.inside {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 0.5em 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.7em;
+}
+
+.box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box section {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 0.5em;
+    border-radius: 7px;
+}
+
+.fifth button {
+    background-color: rgba(34, 46, 80, 0.5);
+    padding: 10px;
+    grid-column: 1/3;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.fifth a:any-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.in {
+    color: #000;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+}
+
+.in div {
+    color: #000000;
+    margin: 0 30px;
+}
+
+input {
+    background-color: rgba(34, 46, 80, 0.2);
+    border-radius: 10px;
+    padding: 2px 20px;
+    border: 4px solid transparent;
+}
+
+.avai input[type=radio] {
+    transform: scale(2);
+    margin-right: 5px;
+}
+
+.location {
+    height: 150px;
+    padding: 0 5px;
+    overflow: auto;
+}
+
+.location input[type=checkbox] {
+    margin-right: 0.5em;
+    transform: scale(1.5);
+}
+
+footer {
+    background-color:#222E50;
+    color: white;
+    max-width: 100vw;
+    height: 5vh;
+    margin-top: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+footer a:any-link {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1040px) {
+    header {
+        justify-content: center;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    main {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .main-menu {
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    header {
+        font-size: 0.5em;
+        font-weight: 200;
+        justify-content: center;
+        position: initial;
+    }
+
+    .logo, .main-menu {
+        display: none;
+    }
+    
+    main {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+}

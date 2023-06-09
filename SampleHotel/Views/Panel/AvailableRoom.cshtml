@@ -1,0 +1,159 @@
+﻿@model SampleHotel.ViewModels.AvailableRoomViewModel
+
+@{
+    Layout = "_FilterLayout";
+}
+
+<h3 class="main-title">Available rooms</h3>
+
+<main>
+    <form asp-controller="Panel" asp-action="FilterAvailableRoom"
+          method="post" class="main-menu">
+        <h5 class="main-menu-title-first">Filter by</h5>
+
+        <h5 class="main-menu-title">Date:</h5>
+        <ul class="menu-list">
+            <li class="date">
+                <label asp-for="SearchParameters.From">Start</label>
+                <input asp-for="SearchParameters.From" type="date">
+            </li>
+
+            <li class="date">
+                <label asp-for="SearchParameters.To">End</label>
+                <input asp-for="SearchParameters.To" type="date">
+            </li>
+        </ul>
+        <hr>
+
+        <h5 class="main-menu-title">Jacuzzi:</h5>
+        <ul class="menu-list radio">
+            <li>
+                <label for="HasJacuzzi-yes">Yes</label>
+                @*<input asp-for="SearchParameters.HasJacuzzi" type="radio" name="speacker" value="1">*@
+                @Html.RadioButtonFor(e=>e.SearchParameters.HasJacuzzi, 1, new { id= "HasJacuzzi-yes" })
+            </li>
+
+            <li>
+                <label for="HasJacuzzi-no">No</label>
+                @*<input asp-for="SearchParameters.HasJacuzzi" type="radio" name="speacker" value="0">*@
+                @Html.RadioButtonFor(e=>e.SearchParameters.HasJacuzzi, 0, new { id= "HasJacuzzi-no" })
+            </li>
+        </ul>
+        <hr>
+
+        <h5 class="main-menu-title">Breakfast:</h5>
+        <ul class="menu-list radio">
+            <li>
+                <label for="HasBreakfast-yes">Yes</label>
+                @Html.RadioButtonFor(e=>e.SearchParameters.HasBreakfast, 1, new { id= "HasBreakfast-yes" })
+            </li>
+
+            <li>
+                <label for="HasBreakfast-no">No</label>
+                @Html.RadioButtonFor(e=>e.SearchParameters.HasBreakfast, 0, new { id= "HasBreakfast-no" })
+            </li>
+        </ul>
+        <hr>
+
+        <h5 class="main-menu-title">Capacity:</h5>
+        <ul class="menu-list radio">
+            <li>
+                <label for="Capacity-1">+1</label>
+                @Html.RadioButtonFor(e=>e.SearchParameters.Capacity, 1, new { id= "Capacity-1" })
+            </li>
+
+            <li>
+                <label for="Capacity-2">+2</label>
+                @Html.RadioButtonFor(e=>e.SearchParameters.Capacity, 2, new { id= "Capacity-2" })
+            </li>
+
+            <li>
+                <label for="Capacity-3">+3</label>
+                @Html.RadioButtonFor(e=>e.SearchParameters.Capacity, 3, new { id= "Capacity-3" })
+            </li>
+
+            <li>
+                <label for="Capacity-4">+4</label>
+                @Html.RadioButtonFor(e=>e.SearchParameters.Capacity, 4, new { id= "Capacity-4" })
+            </li>
+        </ul>
+        <hr>
+
+        <h5 class="main-menu-title">Type:</h5>
+        <ul class="menu-list type">
+            @foreach (var item in Enumeration.GetAll<RoomType>())
+            {
+                <li>
+                    <label for="RoomTypeId-@item.Id">@item.Name</label>
+                    @Html.RadioButtonFor(e=>e.SearchParameters.RoomTypeId, item.Id, new { id= $"RoomTypeId-{item.Id}" })
+                </li>
+            }
+        </ul>
+
+        <ul class="menu-list filter">
+            <li>
+                <button type="submit">
+                    Filter
+                </button>
+            </li>
+        </ul>
+    </form>
+
+
+    <div class="main-page">
+        <ul>
+            @if (!Model.RoomList.Any())
+            {
+                <li>
+                    <h3 style="color:black">Not Available</h3>
+                </li>
+            }
+            @foreach (var item in Model.RoomList)
+            {
+                <li class="box">
+                    <a asp-controller="Panel" asp-action="Room" asp-route-id="@item.Id" class="inside">
+                        <section class="photo">
+                            <img src="../images/@item.ImageUrl" alt="conf" width="1000" height="527">
+                        </section>
+                        <section class="info">
+                            <h3>@item.Name</h3>
+                            <div class="loc">
+                                <img src="../images/location.png" alt="loc">
+                                <p>@item.Location</p>
+                            </div>
+                            <div class="options">
+                                @if (item.HasJacuzzi)
+                                {
+                                    <input type="radio" checked>
+                                    <label for="Jacuzzi">Jacuzzi</label>
+                                    <br>
+                                }
+                                @if (item.HasBreakfast)
+                                {
+                                    <input type="radio" checked>
+                                    <label for="Breakfast">Breakfast</label>
+                                }
+                            </div>
+                        </section>
+                    </a>
+                    <section class="like">
+                        @if (item.IsLiked)
+                        {
+                            <a asp-controller="Panel" asp-action="UnLikeRoom" asp-route-id="@item.Id">
+                                <img src="../images/liked.png" alt="like" id="liked">
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Panel" asp-action="LikeRoom" asp-route-id="@item.Id">
+                                <img src="../images/like.png" alt="like" id="like">
+                            </a>
+                        }
+                    </section>
+                </li>
+            }
+
+
+        </ul>
+    </div>
+</main>

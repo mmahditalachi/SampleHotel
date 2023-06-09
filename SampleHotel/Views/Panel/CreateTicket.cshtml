@@ -1,0 +1,42 @@
+﻿@model SampleHotel.ViewModels.CreateTicketViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/newticket.css" asp-append-version="true" />
+</head>
+
+
+<div class="main-page">
+    <h3 class="main-title">Tickets</h3>
+    <div class="main-page">
+
+        <section class="middle">
+            <div class="ticket-form-container">
+                <form asp-controller="Panel" asp-action="CreateTicket" method="post" class="ticket-form">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input class="text-white" asp-for="Title" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select class="text-white" asp-for="Priority" id="priority" name="priority" required>
+                            <option class="text-white" value="1">Low</option>
+                            <option class="text-white" value="2">Medium</option>
+                            <option class="text-white" value="3">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <textarea class="text-white" asp-for="Description" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-ticket">Submit Ticket</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+

@@ -1,0 +1,49 @@
+﻿@model SampleHotel.ViewModels.TicketListViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/admin-ticket.css" asp-append-version="true" />
+</head>
+
+
+
+<h3 class="main-title">Tickets</h3>
+<div class="main-page pt-3">
+    <ul class="middle">
+
+        @foreach (var item in Model.TicketList)
+        {
+            <li class="box">
+                <div class="headbox">
+                    <h3>@item.Created</h3>
+                    <a href="">@item.Title</a>
+                    <button type="submit" name="delete">x</button>
+                </div>
+                <p class="leftmesseges">@item.Description</p>
+                @foreach (var chat in item.TicketMessages)
+                {
+                    if (Model.CurrentUserId == chat.Sender)
+                    {
+                        <p class="rightmesseges">@chat.Title</p>
+                    }
+                    else
+                    {
+                        <p class="leftmesseges">@chat.Title</p>
+                    }
+                }
+                <div class="reply">
+                    <form class="container" asp-controller="Panel" asp-action="SendMessage" asp-route-id="@item.Id" method="post">
+                        <div class="form-group">
+                            <input asp-for="Message.Title" type="text" placeholder="Reply">
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

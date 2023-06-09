@@ -1,0 +1,74 @@
+﻿@model SampleHotel.ViewModels.CreateEmployeeViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/admin-new-staff.css" asp-append-version="true" />
+</head>
+
+<h3 class="main-title" style="text-align: center;">New staff</h3>
+
+<div class="main-page" style="text-align: center;">
+    <div class="inside" style="display: inline-block;">
+        <form asp-controller="Panel" asp-action="CreateEmployee" method="post" enctype="multipart/form-data">
+            <div class="text-danger">
+                @Html.ValidationSummary(false)
+            </div>
+
+            <div class="box">
+                <section class="in">
+                    <label for="FirstName">FirstName: </label>
+                    <input asp-for="FirstName" type="text" name="FirstName" required>
+                </section>
+                <section class="in">
+                    <label for="LastName">LastName: </label>
+                    <input asp-for="LastName" type="text" name="LastName" required>
+                </section>
+                <section class="in">
+                    <label for="PhoneNumber">Phone Number: </label>
+                    <input asp-for="PhoneNumber" type="text" name="PhoneNumber" required>
+                </section>
+                <section class="in">
+                    <label for="City">City: </label>
+                    <input asp-for="City" type="text" name="City" required>
+                </section>
+                <section class="in">
+                    <label for="Street">Street: </label>
+                    <input asp-for="Street" type="text" name="Street" required>
+                </section>
+                <section class="in">
+                    <label asp-for="DependentFirstName">Dependents FirstName: </label>
+                    <input asp-for="DependentFirstName" type="text" required>
+                </section>
+                <section class="in">
+                    <label asp-for="DependentLastName">Dependents LastName: </label>
+                    <input asp-for="DependentLastName" type="text" required>
+                </section>
+                <section class="in">
+                    <label asp-for="DependentRelation">Dependents Relation: </label>
+                    <input asp-for="DependentRelation" type="text" required>
+                </section>
+                <section class="in">
+                    <label for="type">Position: </label>
+                    <div class="avai">
+                        @foreach (var item in Enumeration.GetAll<EmployeePosition>())
+                        {
+                            @Html.RadioButtonFor(e=>e.EmployeePositionId, item.Id, new { id= $"radio-{item.Name}"})
+                            <label for="radio-@item.Name">@item.Name</label>
+                        }
+                    </div>
+                </section>
+                <section class="in">
+                    <label asp-for="Image">Image:</label>
+                    <input asp-for="Image" name="image" accept="image/*">
+                </section>
+            </div>
+            <div class="fifth box">
+                <button type="submit" name="add">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

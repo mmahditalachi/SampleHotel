@@ -1,0 +1,163 @@
+.main-section{
+    display:flex;
+    justify-content:center;
+}
+
+main {
+    color: black;
+    width: 800px;
+    align-self: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 1.5rem 5rem;
+    box-shadow: 2px 2px 10px -2px black;
+}
+
+.main-title {
+    text-align:center;
+    font-size: 1.8em;
+    padding: 0.05em ;
+    color: #000;
+}
+
+.main-page {
+    margin: 0 1rem;
+}
+
+.box {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;  
+    gap: 20px;  
+    padding: 10px;
+}
+
+.photo img {
+    width: 750px;
+    height: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.info {
+    /* width: 100%; */
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.first {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.first input[type=text] {
+    padding: 3px 0;
+    border: 1px solid black;
+}
+
+.first input[type=date] {
+    padding: 3px 25px;
+}
+
+.loc{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+}
+
+.loc img {
+    width: 30px;
+    height: auto;
+}
+
+.finish{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.finish a:any-link {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.finish button {
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: rgba(34, 46, 80);
+    color: white;
+}
+
+.finish button:hover {
+    background-color: rgba(79, 91, 124, 0.5);
+}
+
+
+@media screen and (max-width: 1020px) {
+    .photo img {
+        width: 250px;
+        height: 200px;
+    }
+
+    .inside {
+        flex-flow: column nowrap;
+    }
+
+    body {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .logo {
+        display: none;
+    } 
+
+    main {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 1.5rem auto;
+    }
+
+    .main-title {
+        display: none;
+    }
+
+    .main-menu {
+        width: 50%;
+    }
+
+    .main-page {
+        width: 80%;
+    }
+
+    .photo img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:485px) {
+    .main-menu {
+        display: none;
+    }
+
+    .lang {
+        display: none;
+    }
+}
+
+.main-menu{
+    justify-content: center;
+}

@@ -1,0 +1,50 @@
+﻿@model SampleHotel.ViewModels.ReserveRoomListViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/admin-reseved.css" asp-append-version="true" />
+</head>
+
+
+<h3 class="main-title">Reservations</h3>
+<div class="main-page">
+
+    <ul>
+        @if (!Model.ReserveRooms.Any())
+        {
+            <li style="color:black;text-align:center"><h3>Not Found</h3></li>
+        }
+        @foreach (var item in Model.ReserveRooms)
+        {
+            <li class="box inside" style="color:black">
+                <section class="photo">
+                    <img src="~/images/@item.ImageUrl" alt="room2" width="800" height="600">
+                </section>
+                <section class="info">
+                    <h3>@item.Name</h3>
+                    <div class="loc">
+                        <img src="~/images/location.png" alt="loc">
+                        <p>@item.Location</p>
+                    </div>
+                    <p>Reservation ID: #10345</p>
+                    <div class="date">
+                        <p>Check in: <em>@item.From.ToShortDateString()</em></p>
+                        <p>Check out: <em>>@item.To.ToShortDateString()</em></p>
+                    </div>
+                    <section class="finish">
+                        <form method="get" asp-controller="Panel" asp-action="ReservedRoom" asp-route-id="@item.RoomReserveId">
+                            <button class="btn" type="submit" name="modify">Modify</button>
+                        </form>
+                        <form asp-controller="Panel" asp-action="CancelReservation" asp-route-id="@item.RoomReserveId">
+                            <button class="btn" type="submit">Cancel</button>
+                        </form>
+                    </section>
+                </section>
+            </li>
+        }
+    </ul>
+</div>
+

@@ -1,0 +1,45 @@
+﻿@model SampleHotel.ViewModels.AvailableRoomViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/favorite.css" asp-append-version="true" />
+</head>
+
+<h3 class="main-title">Favorites</h3>
+<div class="main-page">
+
+    <ul>
+        @foreach (var item in Model.RoomList)
+        {
+            <li class="box inside text-dark">
+                <section class="photo">
+                    <img src="~/images/@item.ImageUrl" alt="meet" width="1000" height="527">
+                </section>
+                <section class="info">
+                    <h3>@item.Name</h3>
+                    <div class="loc">
+                        <img src="~/images/location.png" alt="loc">
+                        <p>@item.Location</p>
+                    </div>
+                    <div class="options">
+                        @if (item.HasJacuzzi)
+                        {
+                            <input type="radio" checked>
+                            <label for="Jacuzzi">Jacuzzi</label>
+                            <br>
+                        }
+                        @if (item.HasBreakfast)
+                        {
+                            <input type="radio" checked>
+                            <label for="Breakfast">Breakfast</label>
+                        }
+                    </div>         
+                </section>
+            </li>
+        }
+    </ul>
+</div>

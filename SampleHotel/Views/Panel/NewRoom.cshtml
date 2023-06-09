@@ -1,0 +1,94 @@
+﻿@model SampleHotel.ViewModels.CreateRoomViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/new-room.css" asp-append-version="true" />
+</head>
+
+
+<h3 class="main-title">New room</h3>
+
+<div class="main-page">
+    <form asp-controller="Panel" asp-action="NewRoom" method="post" enctype="multipart/form-data">
+        <div class="text-danger">
+            @Html.ValidationSummary(false)
+        </div>
+        <div class="inside">
+            <div class="box">
+                <section class="in">
+                    <label asp-for="Location">Room Location: </label>
+                    <input asp-for="Location" type="text" name="Location">
+                </section>
+                <section class="avai in">
+                    <label asp-for="Name">Room Name: </label>
+                    <input asp-for="Name" type="text" name="name">
+                </section>
+            </div>
+            <div class="box">                
+                <section class="in">
+                    <label asp-for="Floor">Floor: </label>
+                    @Html.DropDownListFor(e=>e.Floor, Enumerable.Range(1,10).Select(e=>
+                    new SelectListItem{ Text = e.ToString(), Value = e.ToString()}), "1")
+                </section>
+                <section class="in">
+                    <label asp-for="Capacity">Capacity: </label>
+                    @Html.DropDownListFor(e=>e.Capacity, Enumerable.Range(1,10).Select(e=>
+                    new SelectListItem{ Text = e.ToString(), Value = e.ToString()}), "1")
+                </section>
+            </div>            
+            <div class="box">
+                <section class="in">
+                    <label asp-for="HasJacuzzi">Jacuzzi: </label>
+                    <div class="avai">
+                        @Html.RadioButtonFor(e=>e.HasJacuzzi, 1)
+                        <label for="Jacuzzi">Yes</label>
+
+                        <br>
+
+                        @Html.RadioButtonFor(e=>e.HasJacuzzi, 0)
+                        <label for="speacer">No</label>
+                    </div>
+                </section>
+                <section class="in">
+                    <label asp-for="HasBreakfast">Breakfast: </label>
+                    <div class="avai">
+                        @Html.RadioButtonFor(e=>e.HasBreakfast, 1)
+                        <label for="Breakfast">Yes</label>
+
+                        <br>
+
+                        @Html.RadioButtonFor(e=>e.HasBreakfast, 0)
+                        <label for="Breakfast">No</label>
+                    </div>
+                </section>
+            </div>
+
+            <div class="box">
+                <section class="in">
+                    <label for="type">Type: </label>
+                    <div class="avai">
+                        @foreach (var item in Enumeration.GetAll<RoomType>())
+                        {
+                            @Html.RadioButtonFor(e=>e.RoomTypeId, item.Id, new { id= $"RoomTypeId-{item.Id}" })
+                            <label for="RoomTypeId-@item.Id">@item.Name</label>
+                            <br>
+                        }
+                    </div>
+                </section>
+                <div class="box">
+                    <section class="in">
+                        <label asp-for="Image">Image:</label>
+                        <input asp-for="Image" name="image" accept="image/*">
+                    </section>
+                </div>
+            </div>
+
+            <div class="fifth box">
+                <button type="submit" name="add">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

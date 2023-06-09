@@ -1,0 +1,80 @@
+﻿@model SampleHotel.ViewModels.EmployeeDto
+
+@{
+    Layout = "_PanelLayout";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/staff.css" asp-append-version="true" />
+</head>
+
+<h3 class="main-title">Profile</h3>
+<div class="main-page pt-2">
+    <ul>
+        <li class="box text-dark">
+            <section class="photo">
+                <img src="~/images/@Model.ImageUrl" alt="class1" width="200" height="27">
+            </section>
+            <section class="info">
+                <h3>Staff # @Model.Id</h3>
+                <div class="first">
+                    <div class="loc">
+                        <img src="~/images/position.png" alt="loc">
+                        <p>@Model.EmployeePositionName</p>
+                    </div>
+                </div>
+                <div class="first">
+                    <ul>
+                        <p>Name: @Model.FirstName</p>
+
+                    </ul>
+                    <ul>
+                        <p>LastName: @Model.LastName</p>
+                    </ul>
+                </div>
+
+                <div class="first">
+                    <ul>
+                        <p>ID number: @Model.Id</p>
+
+                    </ul>
+                    <ul>
+                        <p>Phone: @Model.PhoneNumber</p>
+                    </ul>
+                </div>
+
+                <div class="first">
+                    <ul>
+                        <p>City: @Model.City</p>
+
+                    </ul>
+                    <ul>
+                        <p>Street: @Model.Street</p>
+                    </ul>
+                </div>
+
+                <div class="first">
+                    <h3>Dependents:</h3>
+                </div>
+
+                <div class="first">
+                    <ul>
+                        <p>FirstName: @Model.DependentFirstName</p>
+                    </ul>
+                    <ul>
+                        <p>LastName: @Model.DependentLastName</p>
+                    </ul>
+                    <ul>
+                        <p>Relation Type: @Model.DependentRelation</p>
+                    </ul>
+                </div>
+@*
+                <section class="finish">
+                    <button type="submit" name="complete"><a href="../admin/admin-staff.html">Modify</a></button>
+                </section>*@
+            </section>
+        </li>
+
+    </ul>
+</div>

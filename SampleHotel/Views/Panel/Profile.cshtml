@@ -1,0 +1,53 @@
+﻿@model SampleHotel.ViewModels.ProfileViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+</head>
+
+<h3 class="main-title">Profile</h3>
+
+<div class="main-page">
+    <div class="firstpart">
+        <div class="profile box">
+            <img src="../images/prof.jpg" alt="profile" width="250" height="250">
+        </div>
+        <div class="fname box">
+            <h3>FullName:</h3>
+            <p>@Html.DisplayTextFor(e=>e.FullName)</p>
+        </div>
+    </div>
+
+    <div class="secondpart">
+
+        <div class="email box">
+            <h3>Email:</h3>
+            <p>@Html.DisplayTextFor(e=>e.Email)</p>
+        </div>
+        <div class="phone box">
+            <h3>Phone:</h3>
+            <p>@Html.DisplayTextFor(e=>e.PhoneNumber)</p>
+        </div>
+        <div class="country box">
+            <h3>Country:</h3>
+            <p>@Html.DisplayTextFor(e=>e.Country)</p>
+        </div>
+        <div class="city box">
+            <h3>City:</h3>
+            <p>@Html.DisplayTextFor(e=>e.City)</p>
+        </div>
+        <div class="street box">
+            <h3>Street:</h3>
+            <p>@Html.DisplayTextFor(e=>e.Street)</p>
+        </div>
+        <div class="No box">
+            <h3>No:</h3>
+            <p>@Html.DisplayTextFor(e=>e.No)</p>
+        </div>
+    </div>
+</div>
+

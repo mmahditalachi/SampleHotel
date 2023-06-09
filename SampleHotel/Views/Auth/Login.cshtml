@@ -1,0 +1,89 @@
+﻿@model SampleHotel.ViewModels.AuthViewModel
+
+@{
+    Layout = "_HomeLayout";
+}
+
+<div class="background"></div>
+<section class="login-section pt-5">
+    <div class="wrapper">
+        <div class="login-container">
+            <div class="form signup">
+                <header>Signup</header><br>
+
+                <form method="post" id="signup-form">
+
+                    <div class="text-danger">
+                        @Html.ValidationSummary(false)
+                    </div>
+
+                    <input type="text" asp-for="RegisterModel.FullName" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.FullName)" required>
+                    <input type="text" asp-for="RegisterModel.Username" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.Username)" required>
+                    <input type="text" asp-for="RegisterModel.Email" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.Email)" required>
+                    <input type="text" asp-for="RegisterModel.PhoneNumber" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.PhoneNumber)" required>
+
+                    <input type="text" asp-for="RegisterModel.Country" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.Country)" required>
+                    <input type="text" asp-for="RegisterModel.City" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.City)" required>
+                    <input type="text" asp-for="RegisterModel.Street" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.Street)" required>
+                    <input type="text" asp-for="RegisterModel.No" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.No)" required>
+
+                    <input type="password" asp-for="RegisterModel.Password" placeholder="@Html.DisplayNameFor(x => x.RegisterModel.Password)" required>
+                    <div class="radio">
+                        @foreach (var item in Enumeration.GetAll<UserType>())
+                        {
+                            @Html.RadioButtonFor(e=>e.RegisterModel.UserTypeId, item.Id, new { id=$"{item.Name.ToLower()}", name="account_type"})
+                            <label for="@item.Name.ToLower()">@item.Name</label>
+                        }
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="signupCheck" name="terms" required>
+                        <label for="signupCheck">I accept all terms & conditions</label>
+                    </div>
+                    <input asp-route="Register" type="submit" value="Signup" id="signup-btn"/>
+                </form>
+
+            </div>
+
+            <div class="form login">
+                <header>Login</header>
+
+                <form asp-controller="Auth" asp-action="Login" method="post">
+
+                    <input type="text" asp-for="LoginModel.Username" placeholder="@Html.DisplayNameFor(x => x.LoginModel.Username)" required>
+                    <input type="password" asp-for="LoginModel.Password" placeholder="@Html.DisplayNameFor(x => x.LoginModel.Password)" required>
+                    <div class="remember-me-checkbox">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <input type="submit" value="Login" id="login-btn">
+                    <a href="#">Forgot password?</a>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+        const wrapper = document.querySelector(".wrapper"),
+            signupHeader = document.querySelector(".signup header"),
+            loginHeader = document.querySelector(".login header");
+
+        loginHeader.addEventListener("click", () => {
+            wrapper.classList.add("active");
+        });
+        signupHeader.addEventListener("click", () => {
+            wrapper.classList.remove("active");
+        });
+
+        const signupBtn = document.querySelector("#signup-btn");
+
+        const languageButton = document.getElementById("language-selector");
+        languageButton.onclick = function () {
+            window.location.href = "login-tr.html";
+        }
+    </script>
+
+}

@@ -1,0 +1,62 @@
+﻿@inject SignInManager<ApplicationUser> signInManager
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SampleHotel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SampleHotel.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/adminProfile.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../login/login.html">
+                <img src="~/images/logo.svg" alt="">
+            </a>
+        </div>
+
+        <div class="right">
+            <ul class="menu">
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li class="out">
+                        <a class="dropbtn" asp-controller="Panel" asp-action="Profile">Panel</a>
+                    </li>
+
+                    <li class="out">
+                        <a class="dropbtn" asp-controller="Auth" asp-action="Logout">Log out</a>
+                    </li>
+
+                }
+                else
+                {
+                    <li class="out">
+                        <a class="dropbtn" asp-controller="Auth" asp-action="Login">Login</a>
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </header>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - SampleHotel - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

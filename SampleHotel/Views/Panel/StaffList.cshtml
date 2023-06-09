@@ -1,0 +1,37 @@
+﻿@model SampleHotel.ViewModels.EmployeeListViewModel
+
+@{
+    Layout = "_PanelLayout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/admin-staff.css" asp-append-version="true" />
+</head>
+
+
+<ul class="staff-list">
+    @foreach (var item in Model.EmployeeList)
+    {
+        <li class="box mb-4">
+            <a class="inside">
+                <section class="photo">
+                    <img src="../images/@item.ImageUrl" alt="conf" width="600" height="227">
+                </section>
+                <section class="info">
+                    <h3>Staff #@item.Id</h3>
+                    <div class="loc">
+                        <img src="../images/position.png" alt="loc">
+                        <p>@item.EmployeePositionName</p>
+                    </div>
+                    <p><strong>FirstName:</strong> @item.FirstName</p>
+                    <p><strong>LastName:</strong> @item.LastName</p>
+                </section>
+            </a>
+            <section class="profile-button">
+                <form asp-controller="Panel" asp-action="Employee" asp-route-id="@item.Id" method="get">
+                    <button type="submit">MORE INFO</button>
+                </form>
+            </section>
+        </li>
+    }
+</ul>

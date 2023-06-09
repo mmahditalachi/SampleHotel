@@ -1,0 +1,95 @@
+﻿@using System.Security.Claims;
+@inject SignInManager<ApplicationUser> signInManager
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - SampleHotel</title>
+    <link rel="stylesheet" href="admin-available.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SampleHotel.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin-available.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <a href="../login/login.html">
+                    <img src="../images/logo.svg" alt="">
+                </a>
+            </div>
+
+            <div class="right">
+                <ul class="menu">
+                    <li class="out">
+                        <a class="dropbtn" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li class="out">
+                            <a class="dropbtn" asp-controller="Panel" asp-action="AvailableRoom">Available Rooms</a>
+                        </li>
+
+                        if (User.Claims.Any(e => e.Value == "Admin"))
+                        {
+                            <li class="new">
+                                <a class="dropbtn" asp-controller="Panel" asp-action="NewRoom">New room</a>
+                            </li>
+
+                            <li class="new">
+                                <a class="dropbtn" asp-controller="Panel" asp-action="NewStaff">New staff</a>
+                            </li>
+                        }
+
+                        <li class="new">
+                            <a class="dropbtn" asp-controller="Panel" asp-action="CreateTicket">Create Ticket</a>
+                        </li>
+
+                        <li class="new">
+                            <a class="dropbtn" asp-controller="Panel" asp-action="TicketList">Ticket List</a>
+                        </li>
+
+                        <li class="new">
+                            <a class="dropbtn" asp-controller="Panel" asp-action="StaffList">Staff List</a>
+                        </li>
+
+                        <li class="new">
+                            <a class="dropbtn" asp-controller="Panel" asp-action="ReservedRoomList">Reservation</a>
+                        </li>
+
+                        <li class="new">
+                            <a class="dropbtn" asp-controller="Panel" asp-action="FavoriteList">Favorites</a>
+                        </li>
+
+                        <li class="Ticket">
+                            <a class="dropbtn" href="admin-ticket.html">Tickets</a>
+                        </li>
+
+                        <li class="out">
+                            <a class="dropbtn" asp-controller="Auth" asp-action="Logout">Log out</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="out">
+                            <a class="dropbtn" asp-controller="Auth" asp-action="Login">Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </header>
+
+
+        @RenderBody()
+
+        <footer>
+            <p> Copyright &copy; <a href="https://github.com/fissid" target="_blank">Fissid</a> </p>
+        </footer>
+    </div>
+</body>
+</html>
