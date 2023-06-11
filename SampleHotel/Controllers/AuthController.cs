@@ -119,7 +119,7 @@ namespace SampleHotel.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Auth");
             }
         }
     }

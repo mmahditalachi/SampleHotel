@@ -36,11 +36,11 @@
                     }
                 }
                 <div class="reply">
-                    <form class="container" asp-controller="Panel" asp-action="SendMessage" asp-route-id="@item.Id" method="post">
+                    <form class="container form-inlin" asp-controller="Panel" asp-action="SendMessage" asp-route-id="@item.Id" method="post">
                         <div class="form-group">
-                            <input asp-for="Message.Title" type="text" placeholder="Reply">
-                            <button type="submit">Send</button>
+                            <input asp-for="Message.Title" type="text" placeholder="Reply" class="form-control">
                         </div>
+                        <button class="form-control" type="submit">Send</button>
                     </form>
                 </div>
             </li>

@@ -22,9 +22,7 @@
 
         <div class="right">
             <ul class="menu">
-                <li class="out">
-                    <a class="dropbtn" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
+           
                 @if (signInManager.IsSignedIn(User))
                 {
                     <li class="out">
